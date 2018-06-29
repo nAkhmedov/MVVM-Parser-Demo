@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "uz.nakhmedov"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //Support libs
+
+    implementation "com.android.support:appcompat-v7:$rootProject.supportVersion"
+    implementation "com.android.support:design:$rootProject.supportVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraint"
+
+    // Architecture components
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"     // alternatively, just ViewModel
+    implementation "android.arch.lifecycle:livedata:1.1.1"      // alternatively, just LiveData
+    implementation 'android.arch.lifecycle:reactivestreams:1.1.1' // LiveDataReactiveStreams
+
+    // Dagger android
+
+    implementation "com.google.dagger:dagger:$rootProject.dagger"
+    implementation "com.google.dagger:dagger-android:$rootProject.dagger"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger"
+
+    // RxJava
+
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rx_android"
+
+    //Glide
+
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide"
+
+    //Gson
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
